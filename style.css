@@ -662,3 +662,187 @@ footer p{
 .admission-form button:hover{
     background:#8b5a2b;
 }
+
+/* ===========================
+   HOME BACKGROUND
+=========================== */
+#home{
+    background:url("images/home.jpg") center/cover no-repeat;
+    min-height:100vh;
+    padding:80px 20px;
+}
+
+/* ===========================
+   ABOUT BACKGROUND
+=========================== */
+#about{
+    background:url("images/about.jpg") center/cover no-repeat;
+    min-height:100vh;
+    padding:80px 20px;
+}
+
+/* ===========================
+   ADMISSION BACKGROUND
+=========================== */
+#admission{
+    background:url("images/admission.jpg") center/cover no-repeat;
+    min-height:100vh;
+    padding:80px 20px;
+}
+
+/* ===========================
+   CONTACT BACKGROUND
+=========================== */
+#contact{
+    background:url("images/contact.jpg") center/cover no-repeat;
+    min-height:100vh;
+    padding:80px 20px;
+}
+
+/* ===========================
+   CLASSES SECTION
+=========================== */
+
+.class-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.class-card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.class-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.class-card h3{
+    color:#006400;
+}
+
+.class-card p{
+    color:#555;
+    padding:15px;
+}
+
+/* ===========================
+   GALLERY SECTION
+=========================== */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+/* NEWS SECTION BACKGROUND */
+
+#news{
+    background-image: url("images/news.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 80px 20px;
+    position: relative;
+}
+
+#news::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+}
+
+#news .container{
+    position: relative;
+    z-index: 2;
+}
+
+#news h2,
+#news h3,
+#news p{
+    color: white;
+}
+
+.news-card{
+    background: rgba(255,255,255,0.85);
+    color: #000 !important;
+}
+
+.news-card h3{
+    color: #000 !important;
+}
+
+.news-card p{
+    color: #000 !important;
+}
+    
+footer {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url("images/footer.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+
+/* GALLERY BACKGROUND */
+
+#gallery{
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url("images/gallery-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 80px 20px;
+}
+
+#gallery h2{
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+}
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+}
+
+.gallery img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid white;
+}
+
+
