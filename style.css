@@ -846,3 +846,20 @@ footer {
 }
 
 
+.video-section {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.video-section h2 {
+    margin-bottom: 20px;
+}
+
+.video-section video {
+    width: 100%;
+    border-radius: 10px;
+}
