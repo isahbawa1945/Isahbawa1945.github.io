@@ -53,14 +53,15 @@ const student = {
         await addDoc(collection(db, "admissions"), student);
 
       
-      alert(
-"Application Submitted Successfully!\n\n" +
-"Application Number: " + applicationNumber
-);
-      
-    
+      localStorage.setItem("applicationNumber", applicationNumber);
+localStorage.setItem("studentName", student.fullName);
+localStorage.setItem("studentClass", student.studentClass);
 
-        form.reset();
+window.location.href = "acknowledgement.html";
+      
+      
+      
+      
 
     } catch (error) {
         console.error(error);
