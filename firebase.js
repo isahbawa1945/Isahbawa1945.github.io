@@ -26,5 +26,32 @@ const form = document.getElementById("admissionForm");
 form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    alert("Firebase is connected successfully!");
+    const formData = new FormData(form);
+
+    const student = {
+        fullName: formData.get("fullName"),
+        dob: formData.get("dob"),
+        gender: formData.get("gender"),
+        state: formData.get("state"),
+        lga: formData.get("lga"),
+        studentClass: formData.get("studentClass"),
+        parentName: formData.get("parentName"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        address: formData.get("address"),
+        info: formData.get("info"),
+        createdAt: new Date()
+    };
+
+    try {
+        await addDoc(collection(db, "admissions"), student);
+
+        alert("Application submitted successfully!");
+
+        form.reset();
+
+    } catch (error) {
+        console.error(error);
+        alert("Error: " + error.message);
+    }
 });
