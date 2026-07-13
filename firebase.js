@@ -28,25 +28,37 @@ form.addEventListener("submit", async (e) => {
 
     const formData = new FormData(form);
 
-    const student = {
-        fullName: formData.get("fullName"),
-        dob: formData.get("dob"),
-        gender: formData.get("gender"),
-        state: formData.get("state"),
-        lga: formData.get("lga"),
-        studentClass: formData.get("studentClass"),
-        parentName: formData.get("parentName"),
-        phone: formData.get("phone"),
-        email: formData.get("email"),
-        address: formData.get("address"),
-        info: formData.get("info"),
-        createdAt: new Date()
-    };
+  
+  const applicationNumber =
+"ARK" + Date.now();
 
+const student = {
+    applicationNumber: applicationNumber,
+    fullName: formData.get("fullName"),
+    dob: formData.get("dob"),
+    gender: formData.get("gender"),
+    state: formData.get("state"),
+    lga: formData.get("lga"),
+    studentClass: formData.get("studentClass"),
+    parentName: formData.get("parentName"),
+    phone: formData.get("phone"),
+    email: formData.get("email"),
+    address: formData.get("address"),
+    info: formData.get("info"),
+    createdAt: new Date()
+};
+  
+  
     try {
         await addDoc(collection(db, "admissions"), student);
 
-        alert("Application submitted successfully!");
+      
+      alert(
+"Application Submitted Successfully!\n\n" +
+"Application Number: " + applicationNumber
+);
+      
+    
 
         form.reset();
 
