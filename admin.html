@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f4f4;
+}
+
+header{
+    background:#5b2c6f;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    width:95%;
+    margin:20px auto;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:20px;
+    box-shadow:0 3px 10px rgba(0,0,0,.1);
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:5px;
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:left;
+}
+
+th{
+    background:#5b2c6f;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f9f9f9;
+}
+
+button{
+    padding:8px 15px;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+    background:#5b2c6f;
+    color:white;
+}
+
+button:hover{
+    background:#8b5a2b;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>School Admin Dashboard</h1>
+
+<p>Madarasatul Arkanul Islam Wadirasatul Islamiyya</p>
+
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Total Applications</h2>
+
+<h1 id="total">0</h1>
+
+</div>
+
+<input
+type="text"
+id="search"
+placeholder="Search Student Name or Application Number">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Application No</th>
+
+<th>Student Name</th>
+
+<th>Class</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="students">
+
+</tbody>
+
+</table>
+
+</div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>

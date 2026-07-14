@@ -3,50 +3,351 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acknowledgement Slip</title>
+<title>Student Admission Acknowledgement Slip</title>
 
 <link rel="stylesheet" href="style.css">
 
 <style>
+
 body{
-    background:#f5f5f5;
+    margin:0;
+    padding:30px;
+    background:#f0f2f5;
     font-family:Arial,sans-serif;
 }
 
 .slip{
-    width:90%;
-    max-width:700px;
-    margin:40px auto;
+    max-width:800px;
+    margin:auto;
     background:#fff;
-    padding:30px;
+    border:3px solid #5b2c6f;
     border-radius:10px;
+    padding:30px;
     box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 
-.slip h1{
+.header{
     text-align:center;
+}
+
+.header img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+}
+
+.header h1{
+    margin:10px 0 5px;
     color:#5b2c6f;
+    font-size:28px;
+    font-family:Georgia,serif;
 }
 
-.slip h2{
+.header p{
+    margin:4px 0;
+    font-size:14px;
+}
+
+.title{
+    margin:25px 0;
+    background:#5b2c6f;
+    color:white;
     text-align:center;
-    color:#8b5a2b;
+    padding:12px;
+    font-size:20px;
+    font-weight:bold;
+    border-radius:5px;
 }
 
-.slip p{
-    font-size:18px;
-    margin:15px 0;
+.passport{
+    width:130px;
+    height:160px;
+    border:2px solid #999;
+    margin:20px auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#777;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table td{
+    border:1px solid #ddd;
+    padding:12px;
+    font-size:15px;
+}
+
+.label{
+    width:35%;
+    background:#f8f8f8;
+    font-weight:bold;
+}
+
+.footer{
+    display:flex;
+    justify-content:space-between;
+    margin-top:50px;
+    text-align:center;
+}
+
+.signature{
+    width:220px;
+    border-top:1px solid #000;
+    padding-top:8px;
+}
+
+.notice{
+    margin-top:30px;
+    font-size:14px;
+    text-align:center;
 }
 
 button{
     width:100%;
+    margin-top:25px;
     padding:15px;
-    margin-top:20px;
-    background:#5b2c6f;
-    color:#fff;
-    border:none;
-    border-radius:8px;
     font-size:18px;
+    background:#5b2c6f;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#8b5a2b;
+}
+
+@media print{
+
+button{
+display:none;
+}
+
+body{
+background:white;
+padding:0;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="slip">
+
+<div class="header">
+
+<img src="Images/logo.png" alt="School Logo">
+
+<h1>MADARASATUL ARKANUL ISLAM</h1>
+
+<p><strong>Wadirasatul Islamiyya</strong></p>
+
+<p><em>Qur'an, Sunnah, Knowledge</em></p>
+
+<p>Beside Chanchaga Primary School, Along Supreme International School, Minna, Niger State, Nigeria.</p>
+
+</div>
+
+<div class="title">
+
+STUDENT ADMISSION ACKNOWLEDGEMENT SLIP
+
+</div>
+
+<div class="passport">
+
+Passport Not Uploaded
+
+</div>
+
+<table>
+
+<tr>
+<td class="label">Application Number</td>
+<td id="appNo"></td>
+</tr>
+
+<tr>
+<td class="label">Student Name</td>
+<td id="studentName"></td>
+</tr>
+
+<tr>
+<td class="label">Class Applied For</td>
+<td id="studentClass"></td>
+</tr>
+
+<tr>
+<td class="label">Date Issued</td>
+<td id="today"></td>
+</tr>
+
+<tr>
+<td class="label">Admission Status</td>
+<td style="color:green;"><strong>Pending</strong></td>
+</tr>
+
+</table>
+
+<div class="footer">
+
+<div class="signature">
+Principal's Signature
+</div>
+
+<div class="signature">
+School Stamp
+</div>
+
+</div>
+
+<div class="notice">
+
+<strong>Important Notice</strong><br>
+
+Please come along with this acknowledgement slip, two recent passport photographs and your original credentials during screening.
+
+</div>
+
+<button onclick="window.print()">
+
+🖨 Print Acknowledgement Slip
+
+</button>
+
+</div>
+
+<script>
+
+document.getElementById("appNo").textContent =
+localStorage.getItem("applicationNumber");
+
+document.getElementById("studentName").textContent =
+localStorage.getItem("studentName");
+
+document.getElementById("studentClass").textContent =
+localStorage.getItem("studentClass");
+
+document.getElementById("today").textContent =
+new Date().toLocaleDateString();
+
+</script>
+
+</body>
+</html>
+
+
+<style>
+body{
+    margin:0;
+    padding:30px;
+    background:#f0f2f5;
+    font-family:Arial, sans-serif;
+}
+
+.slip{
+    max-width:800px;
+    margin:auto;
+    background:#fff;
+    border:3px solid #5b2c6f;
+    border-radius:10px;
+    padding:30px;
+}
+
+.header{
+    text-align:center;
+}
+
+.header img{
+    width:90px;
+    height:90px;
+    border-radius:50%;
+}
+
+.header h1{
+    margin:10px 0 5px;
+    font-size:28px;
+    color:#5b2c6f;
+    font-family:Georgia, serif;
+}
+
+.header p{
+    margin:4px 0;
+    font-size:14px;
+}
+
+.title{
+    background:#5b2c6f;
+    color:white;
+    text-align:center;
+    padding:12px;
+    margin:25px 0;
+    font-size:20px;
+    font-weight:bold;
+    border-radius:5px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table td{
+    padding:12px;
+    border:1px solid #ddd;
+    font-size:15px;
+}
+
+.label{
+    font-weight:bold;
+    width:35%;
+    background:#f7f7f7;
+}
+
+.passport{
+    width:130px;
+    height:160px;
+    border:2px solid #999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:20px auto;
+    color:#888;
+    font-size:13px;
+}
+
+.footer{
+    margin-top:40px;
+    display:flex;
+    justify-content:space-between;
+    text-align:center;
+}
+
+.signature{
+    width:200px;
+    border-top:1px solid #000;
+    padding-top:8px;
+}
+
+button{
+    margin-top:30px;
+    width:100%;
+    padding:15px;
+    font-size:18px;
+    background:#5b2c6f;
+    color:white;
+    border:none;
+    border-radius:5px;
     cursor:pointer;
 }
 
@@ -58,59 +359,11 @@ button:hover{
 button{
 display:none;
 }
+body{
+background:white;
+padding:0;
+}
 }
 </style>
 
-</head>
 
-<body>
-
-<div class="slip">
-
-<h1>MADARASATUL ARKANUL ISLAM</h1>
-
-<h2>WADIRASATUL ISLAMIYYA</h2>
-
-<hr>
-
-<h2>STUDENT ADMISSION ACKNOWLEDGEMENT SLIP</h2>
-
-<p><strong>Application Number:</strong>
-<span id="appNo"></span></p>
-
-<p><strong>Student Name:</strong>
-<span id="studentName"></span></p>
-
-<p><strong>Class Applied For:</strong>
-<span id="studentClass"></span></p>
-
-<p><strong>Status:</strong>
-Pending</p>
-
-<p><strong>Date:</strong>
-<span id="today"></span></p>
-
-<button onclick="window.print()">
-Print Acknowledgement Slip
-</button>
-
-</div>
-
-<script>
-
-document.getElementById("appNo").textContent=
-localStorage.getItem("applicationNumber");
-
-document.getElementById("studentName").textContent=
-localStorage.getItem("studentName");
-
-document.getElementById("studentClass").textContent=
-localStorage.getItem("studentClass");
-
-document.getElementById("today").textContent=
-new Date().toLocaleDateString();
-
-</script>
-
-</body>
-</html>

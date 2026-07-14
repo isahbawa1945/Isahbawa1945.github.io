@@ -1,70 +1,41 @@
-// Firebase SDK
+// Import Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
-  getFirestore,
-  collection,
-  addDoc
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    getDoc,
+    doc,
+    updateDoc,
+    deleteDoc,
+    serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// Your Firebase configuration
+// Firebase Configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBkqdWH8i6yH5bjYGYVtuZaoLRov-Nmmeg",
-  authDomain: "madarasatul-arkanul-islam.firebaseapp.com",
-  projectId: "madarasatul-arkanul-islam",
-  storageBucket: "madarasatul-arkanul-islam.firebasestorage.app",
-  messagingSenderId: "128596209298",
-  appId: "1:128596209298:web:943f249d732975ebe2404b",
-  measurementId: "G-2TGLVJR4EW"
+    apiKey: "AIzaSyBkqdWH8i6yH5bjYGYVtuZaoLRov-Nmmeg",
+    authDomain: "madarasatul-arkanul-islam.firebaseapp.com",
+    projectId: "madarasatul-arkanul-islam",
+    storageBucket: "madarasatul-arkanul-islam.firebasestorage.app",
+    messagingSenderId: "128596209298",
+    appId: "1:128596209298:web:943f249d732975ebe2404b",
+    measurementId: "G-2TGLVJR4EW"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-const form = document.getElementById("admissionForm");
-
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-
-  
-  const applicationNumber =
-"ARK" + Date.now();
-
-const student = {
-    applicationNumber: applicationNumber,
-    fullName: formData.get("fullName"),
-    dob: formData.get("dob"),
-    gender: formData.get("gender"),
-    state: formData.get("state"),
-    lga: formData.get("lga"),
-    studentClass: formData.get("studentClass"),
-    parentName: formData.get("parentName"),
-    phone: formData.get("phone"),
-    email: formData.get("email"),
-    address: formData.get("address"),
-    info: formData.get("info"),
-    createdAt: new Date()
+// Export everything for use in other files
+export {
+    db,
+    collection,
+    addDoc,
+    getDocs,
+    getDoc,
+    doc,
+    updateDoc,
+    deleteDoc,
+    serverTimestamp
 };
-  
-  
-    try {
-        await addDoc(collection(db, "admissions"), student);
-
-      
-      localStorage.setItem("applicationNumber", applicationNumber);
-localStorage.setItem("studentName", student.fullName);
-localStorage.setItem("studentClass", student.studentClass);
-
-window.location.href = "acknowledgement.html";
-      
-      
-      
-      
-
-    } catch (error) {
-        console.error(error);
-        alert("Error: " + error.message);
-    }
-});
