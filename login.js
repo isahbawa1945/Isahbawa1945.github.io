@@ -1,24 +1,43 @@
+const loginBtn = document.getElementById("loginBtn");
+const error = document.getElementById("error");
+
+// If already logged in, go straight to dashboard
+if (localStorage.getItem("adminLoggedIn") === "true") {
+    window.location.href = "admin.html";
+}
+
+loginBtn.addEventListener("click", login);
+
+// Allow Enter key to login
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        login();
+    }
+});
+
 function login() {
 
     const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value;
+    const password = document.getElementById("password").value.trim();
 
-    // Change these to your own login details
+    // ===== Change these to your preferred login details =====
     const adminUsername = "Ismaila Isah";
-const adminPassword = "Arkanul2026";
+    const adminPassword = "Arkanul2026";
+    // =======================================================
 
     if (username === adminUsername && password === adminPassword) {
 
-        // Save login status
         localStorage.setItem("adminLoggedIn", "true");
 
-        // Go to the dashboard
+        alert("Login Successful!");
+
         window.location.href = "admin.html";
 
     } else {
 
-        document.getElementById("error").textContent =
-        "Invalid username or password.";
+        error.textContent = "Invalid username or password.";
+
+        document.getElementById("password").value = "";
 
     }
 

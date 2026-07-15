@@ -1,69 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Login</title>
+
+<title>School Admin Login</title>
 
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
 }
 
 body{
-    background:#5b2c6f;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+background:#5b2c6f;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
 }
 
 .login-box{
-    background:#fff;
-    width:350px;
-    padding:30px;
-    border-radius:10px;
-    box-shadow:0 5px 20px rgba(0,0,0,.3);
+background:#fff;
+width:100%;
+max-width:380px;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,.3);
 }
 
 h2{
-    text-align:center;
-    color:#5b2c6f;
-    margin-bottom:20px;
+text-align:center;
+color:#5b2c6f;
+margin-bottom:8px;
+}
+
+.subtitle{
+text-align:center;
+color:#777;
+margin-bottom:25px;
+font-size:14px;
 }
 
 input{
-    width:100%;
-    padding:12px;
-    margin:10px 0;
-    border:1px solid #ccc;
-    border-radius:5px;
-    font-size:16px;
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:5px;
+font-size:16px;
+}
+
+input:focus{
+outline:none;
+border-color:#5b2c6f;
 }
 
 button{
-    width:100%;
-    padding:12px;
-    background:#5b2c6f;
-    color:white;
-    border:none;
-    border-radius:5px;
-    font-size:16px;
-    cursor:pointer;
+width:100%;
+padding:13px;
+background:#5b2c6f;
+color:white;
+border:none;
+border-radius:5px;
+font-size:16px;
+cursor:pointer;
+margin-top:10px;
 }
 
 button:hover{
-    background:#8b5a2b;
+background:#8b5a2b;
 }
 
 #error{
-    color:red;
-    text-align:center;
-    margin-top:10px;
+color:red;
+text-align:center;
+margin-top:15px;
+font-weight:bold;
 }
+
+@media(max-width:480px){
+
+.login-box{
+padding:20px;
+}
+
+}
+
 </style>
 
 </head>
@@ -74,17 +102,23 @@ button:hover{
 
 <h2>Admin Login</h2>
 
+<p class="subtitle">
+Madarasatul Arkanul Islam Wadirasatul Islamiyya
+</p>
+
 <input
 type="text"
 id="username"
-placeholder="Username">
+placeholder="Enter Username"
+required>
 
 <input
 type="password"
 id="password"
-placeholder="Password">
+placeholder="Enter Password"
+required>
 
-<button onclick="login()">
+<button id="loginBtn">
 Login
 </button>
 
