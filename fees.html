@@ -77,7 +77,6 @@ type="text"
 id="applicationNumber"
 placeholder="Application Number">
 
-
 <input
 type="text"
 id="studentName"
@@ -91,25 +90,28 @@ placeholder="Class"
 readonly>
 
 <select id="feeType">
-
 <option value="">Select Fee Type</option>
-
 <option>Admission Fee</option>
-
 <option>School Fee</option>
-
 <option>Examination Fee</option>
-
 <option>Uniform Fee</option>
-
 <option>Books Fee</option>
-
 <option>Registration Fee</option>
-
 <option>Other</option>
-
 </select>
 
+<input
+type="text"
+id="session"
+value="2026/2027 Academic Session"
+readonly>
+
+<select id="term">
+<option value="">Select Term</option>
+<option>First Term</option>
+<option>Second Term</option>
+<option>Third Term</option>
+</select>
 
 <input
 type="number"
@@ -122,20 +124,15 @@ id="amountPaid"
 placeholder="Amount Paid">
 
 <select id="paymentMethod">
-
 <option>Cash</option>
-
 <option>Transfer</option>
-
 <option>POS</option>
-
 </select>
 
 <button id="savePayment">
-
 Save Payment
-
 </button>
+
 
 </div>
 

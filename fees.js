@@ -7,14 +7,19 @@ import {
 } from "./firebase.js";
 
 const saveBtn = document.getElementById("savePayment");
-
 const applicationInput = document.getElementById("applicationNumber");
 
+// Automatically load student details
 applicationInput.addEventListener("input", async () => {
 
     const applicationNumber = applicationInput.value.trim();
 
-    if (applicationNumber === "") return;
+    if (applicationNumber === "") {
+        document.getElementById("studentName").value = "";
+        document.getElementById("studentClass").value = "";
+        document.getElementById("totalFees").value = "";
+        return;
+    }
 
     try {
 
@@ -33,34 +38,64 @@ applicationInput.addEventListener("input", async () => {
                 document.getElementById("studentName").value = student.fullName;
                 document.getElementById("studentClass").value = student.studentClass;
 
+                let totalFee = 0;
+
+                switch (student.studentClass) {
+
+                    case "Beginners":
+                        totalFee = 15000;
+                        break;
+
+                    case "Intermediate":
+                        totalFee = 20000;
+                        break;
+
+                    case "Advanced":
+                        totalFee = 25000;
+                        break;
+
+                    case "Tahfiz":
+                        totalFee = 30000;
+                        break;
+
+                    default:
+                        totalFee = 0;
+
+                }
+
+                document.getElementById("totalFees").value = totalFee;
+
             }
 
         });
 
         if (!found) {
 
-            alert("Student not found.");
-
             document.getElementById("studentName").value = "";
             document.getElementById("studentClass").value = "";
+            document.getElementById("totalFees").value = "";
 
         }
 
     } catch (error) {
 
         console.error(error);
-
         alert("Error loading student information.");
 
     }
 
 });
 
+// Save Payment
 saveBtn.addEventListener("click", async () => {
 
     const applicationNumber = document.getElementById("applicationNumber").value.trim();
     const studentName = document.getElementById("studentName").value.trim();
     const studentClass = document.getElementById("studentClass").value.trim();
+
+    const feeType = document.getElementById("feeType").value;
+    const session = document.getElementById("session").value;
+    const term = document.getElementById("term").value;
 
     const totalFees = Number(document.getElementById("totalFees").value);
     const amountPaid = Number(document.getElementById("amountPaid").value);
@@ -71,6 +106,8 @@ saveBtn.addEventListener("click", async () => {
         applicationNumber === "" ||
         studentName === "" ||
         studentClass === "" ||
+        feeType === "" ||
+        term === "" ||
         totalFees <= 0 ||
         amountPaid <= 0
     ) {
@@ -79,7 +116,6 @@ saveBtn.addEventListener("click", async () => {
     }
 
     const balance = totalFees - amountPaid;
-
     const receiptNumber = "RCP" + Date.now();
 
     try {
@@ -90,6 +126,9 @@ saveBtn.addEventListener("click", async () => {
             applicationNumber,
             studentName,
             studentClass,
+            feeType,
+            session,
+            term,
             totalFees,
             amountPaid,
             balance,
@@ -101,23 +140,11 @@ saveBtn.addEventListener("click", async () => {
 
         alert("School fee payment saved successfully!");
 
-        localStorage.setItem("receiptNumber", receiptNumber);
-
-
-window.location.href = `receipt.html?receipt=${receiptNumber}`;
-
-
-        document.getElementById("applicationNumber").value = "";
-        document.getElementById("studentName").value = "";
-        document.getElementById("studentClass").value = "";
-        document.getElementById("totalFees").value = "";
-        document.getElementById("amountPaid").value = "";
-        document.getElementById("paymentMethod").selectedIndex = 0;
+        window.location.href = `receipt.html?receipt=${receiptNumber}`;
 
     } catch (error) {
 
         console.error(error);
-
         alert("Error saving payment.\n\n" + error.message);
 
     }

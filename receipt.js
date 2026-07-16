@@ -28,8 +28,15 @@ try {
             document.getElementById("receiptNumber").textContent = data.receiptNumber;
             document.getElementById("applicationNumber").textContent = data.applicationNumber;
             document.getElementById("studentName").textContent = data.studentName;
+            
             document.getElementById("studentClass").textContent = data.studentClass;
-            document.getElementById("totalFees").textContent = "₦" + Number(data.totalFees).toLocaleString();
+document.getElementById("feeType").textContent = data.feeType;
+document.getElementById("session").textContent = data.session;
+document.getElementById("term").textContent = data.term;
+
+document.getElementById("totalFees").textContent = "₦" + Number(data.totalFees).toLocaleString();
+            
+           
             document.getElementById("amountPaid").textContent = "₦" + Number(data.amountPaid).toLocaleString();
             document.getElementById("balance").textContent = "₦" + Number(data.balance).toLocaleString();
             document.getElementById("paymentMethod").textContent = data.paymentMethod;
