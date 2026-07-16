@@ -19,29 +19,49 @@ if (form) {
 
             const applicationNumber = "ARK" + Date.now();
 
-            const student = {
+            // Read passport first
+            let passportBase64 = "";
 
-                applicationNumber,
+            const passport = formData.get("passport");
 
-                fullName: formData.get("fullName"),
-                dob: formData.get("dob"),
-                gender: formData.get("gender"),
-                state: formData.get("state"),
-                lga: formData.get("lga"),
-                studentClass: formData.get("studentClass"),
-                parentName: formData.get("parentName"),
-                phone: formData.get("phone"),
-                email: formData.get("email"),
-                address: formData.get("address"),
-                info: formData.get("info"),
+            if (passport && passport.size > 0) {
 
-                status: "Pending",
+                passportBase64 = await new Promise((resolve) => {
 
-                createdAt: serverTimestamp()
+                    const reader = new FileReader();
 
-            };
+                    reader.onload = () => resolve(reader.result);
 
-            // Save to Firebase
+                    reader.readAsDataURL(passport);
+
+                });
+
+            }
+
+        const student = {
+
+    applicationNumber,
+
+    fullName: formData.get("fullName"),
+    dob: formData.get("dob"),
+    gender: formData.get("gender"),
+    state: formData.get("state"),
+    lga: formData.get("lga"),
+    studentClass: formData.get("studentClass"),
+    parentName: formData.get("parentName"),
+    phone: formData.get("phone"),
+    email: formData.get("email"),
+    address: formData.get("address"),
+    info: formData.get("info"),
+
+    status: "Pending",
+
+
+
+};
+    
+
+            // Save to Firestore
             const docRef = await addDoc(collection(db, "admissions"), student);
 
             // Save locally
@@ -58,35 +78,11 @@ if (form) {
             localStorage.setItem("email", student.email);
             localStorage.setItem("address", student.address);
             localStorage.setItem("info", student.info);
+            localStorage.setItem("passport", passportBase64);
 
-            // Passport
-            const passport = formData.get("passport");
+            alert("Application Submitted Successfully!");
 
-            if (passport && passport.size > 0) {
-
-                const reader = new FileReader();
-
-                reader.onload = function () {
-
-                    localStorage.setItem("passport", reader.result);
-
-                    alert("Application Submitted Successfully!");
-
-                    window.location.href = `acknowledgement.html?id=${docRef.id}`;
-
-                };
-
-                reader.readAsDataURL(passport);
-
-            } else {
-
-                localStorage.removeItem("passport");
-
-                alert("Application Submitted Successfully!");
-
-                window.location.href = `acknowledgement.html?id=${docRef.id}`;
-
-            }
+            window.location.href = `acknowledgement.html?id=${docRef.id}`;
 
         } catch (error) {
 

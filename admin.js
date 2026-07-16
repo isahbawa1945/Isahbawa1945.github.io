@@ -1,3 +1,9 @@
+// Check if admin is logged in
+if (localStorage.getItem("adminLoggedIn") !== "true") {
+    alert("Please login first.");
+    window.location.href = "login.html";
+}
+
 import {
     db,
     collection,
@@ -8,32 +14,40 @@ import {
 } from "./firebase.js";
 
 const table = document.getElementById("students");
-
 const total = document.getElementById("total");
 const pending = document.getElementById("pending");
 const approved = document.getElementById("approved");
 const rejected = document.getElementById("rejected");
-
 const search = document.getElementById("search");
+const logoutBtn = document.getElementById("logoutBtn");
 
 let students = [];
 
 async function loadStudents() {
 
-    const snapshot = await getDocs(collection(db, "admissions"));
+    try {
 
-    students = [];
+        const snapshot = await getDocs(collection(db, "admissions"));
 
-    snapshot.forEach((studentDoc) => {
+        students = [];
 
-        students.push({
-            id: studentDoc.id,
-            ...studentDoc.data()
+        snapshot.forEach((studentDoc) => {
+
+            students.push({
+                id: studentDoc.id,
+                ...studentDoc.data()
+            });
+
         });
 
-    });
+        renderStudents(students);
 
-    renderStudents(students);
+    } catch (error) {
+
+        console.error(error);
+        alert("Failed to load students.");
+
+    }
 
 }
 
@@ -56,50 +70,48 @@ function renderStudents(data) {
         if (status === "Approved") approvedCount++;
         if (status === "Rejected") rejectedCount++;
 
-        let statusClass = "status-pending";
+        let statusColor = "orange";
 
-        if (status === "Approved") statusClass = "status-approved";
-        if (status === "Rejected") statusClass = "status-rejected";
+        if (status === "Approved") statusColor = "green";
+        if (status === "Rejected") statusColor = "red";
 
         table.innerHTML += `
-        <tr>
 
-            <td>${student.applicationNumber}</td>
+<tr>
 
-            <td>${student.fullName}</td>
+<td>${student.applicationNumber || ""}</td>
 
-            <td>${student.studentClass}</td>
+<td>${student.fullName || ""}</td>
 
-            <td class="${statusClass}">
-                ${status}
-            </td>
+<td>${student.studentClass || ""}</td>
 
-            <td>
+<td style="color:${statusColor};font-weight:bold;">
+${status}
+</td>
 
-                <button class="view"
-                    onclick="viewStudent('${student.id}')">
-                    View
-                </button>
+<td>
 
-                <button class="approve"
-                    onclick="approveStudent('${student.id}')">
-                    Approve
-                </button>
+<button onclick="viewStudent('${student.id}')">
+👁 View
+</button>
 
-                <button class="reject"
-                    onclick="rejectStudent('${student.id}')">
-                    Reject
-                </button>
+<button onclick="approveStudent('${student.id}')">
+✅
+</button>
 
-                <button class="delete"
-                    onclick="deleteStudent('${student.id}')">
-                    Delete
-                </button>
+<button onclick="rejectStudent('${student.id}')">
+❌
+</button>
 
-            </td>
+<button onclick="deleteStudent('${student.id}')">
+🗑
+</button>
 
-        </tr>
-        `;
+</td>
+
+</tr>
+
+`;
 
     });
 
@@ -110,50 +122,78 @@ function renderStudents(data) {
 
 }
 
-window.viewStudent = function(id){
+window.viewStudent = function(id) {
 
     window.location.href = `view.html?id=${id}`;
 
-}
+};
 
-window.approveStudent = async function(id){
+window.approveStudent = async function(id) {
 
-    if(!confirm("Approve this student's admission?")) return;
+    if (!confirm("Approve this student's admission?")) return;
 
-    await updateDoc(doc(db,"admissions",id),{
+    try {
 
-        status:"Approved"
+        await updateDoc(doc(db, "admissions", id), {
+            status: "Approved"
+        });
 
-    });
+        alert("Student Approved Successfully.");
 
-    loadStudents();
+        loadStudents();
 
-}
-window.rejectStudent = async function(id){
+    } catch (error) {
 
-    if(!confirm("Reject this student's admission?")) return;
+        console.error(error);
+        alert("Unable to approve student.");
 
-    await updateDoc(doc(db,"admissions",id),{
+    }
 
-        status:"Rejected"
+};
 
-    });
+window.rejectStudent = async function(id) {
 
-    loadStudents();
+    if (!confirm("Reject this student's admission?")) return;
 
-}
+    try {
 
-window.deleteStudent = async function(id){
+        await updateDoc(doc(db, "admissions", id), {
+            status: "Rejected"
+        });
 
-    if(!confirm("Are you sure you want to permanently delete this application?")) return;
+        alert("Student Rejected Successfully.");
 
-    await deleteDoc(doc(db,"admissions",id));
+        loadStudents();
 
-    alert("Application deleted successfully.");
+    } catch (error) {
 
-    loadStudents();
+        console.error(error);
+        alert("Unable to reject student.");
 
-}
+    }
+
+};
+
+window.deleteStudent = async function(id) {
+
+    if (!confirm("Delete this application permanently?")) return;
+
+    try {
+
+        await deleteDoc(doc(db, "admissions", id));
+
+        alert("Application Deleted Successfully.");
+
+        loadStudents();
+
+    } catch (error) {
+
+        console.error(error);
+        alert("Unable to delete application.");
+
+    }
+
+};
 
 search.addEventListener("keyup", () => {
 
@@ -161,12 +201,9 @@ search.addEventListener("keyup", () => {
 
     const filtered = students.filter(student => {
 
-        const fullName = (student.fullName || "").toLowerCase();
-        const applicationNumber = (student.applicationNumber || "").toLowerCase();
-
         return (
-            fullName.includes(keyword) ||
-            applicationNumber.includes(keyword)
+            (student.fullName || "").toLowerCase().includes(keyword) ||
+            (student.applicationNumber || "").toLowerCase().includes(keyword)
         );
 
     });
@@ -175,17 +212,70 @@ search.addEventListener("keyup", () => {
 
 });
 
-loadStudents();
-const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
 
-logoutBtn.addEventListener("click", () => {
+    logoutBtn.addEventListener("click", () => {
 
-    if(confirm("Are you sure you want to logout?")){
+        if (confirm("Are you sure you want to logout?")) {
 
-        localStorage.removeItem("adminLoggedIn");
+            localStorage.removeItem("adminLoggedIn");
 
-        window.location.href = "login.html";
+            window.location.href = "login.html";
 
+        }
+
+    });
+
+}
+
+
+
+// ===========================
+// EXPORT STUDENTS TO EXCEL (CSV)
+// ===========================
+
+const exportBtn = document.getElementById("exportBtn");
+
+exportBtn.addEventListener("click", () => {
+
+    if (students.length === 0) {
+        alert("No student records available.");
+        return;
     }
 
+    let csv =
+`Application Number,Student Name,Date of Birth,Gender,State,LGA,Class,Parent Name,Phone,Email,Address,Status\n`;
+
+    students.forEach(student => {
+
+        csv += `"${student.applicationNumber || ""}",`;
+        csv += `"${student.fullName || ""}",`;
+        csv += `"${student.dob || ""}",`;
+        csv += `"${student.gender || ""}",`;
+        csv += `"${student.state || ""}",`;
+        csv += `"${student.lga || ""}",`;
+        csv += `"${student.studentClass || ""}",`;
+        csv += `"${student.parentName || ""}",`;
+        csv += `"${student.phone || ""}",`;
+        csv += `"${student.email || ""}",`;
+        csv += `"${student.address || ""}",`;
+        csv += `"${student.status || "Pending"}"\n`;
+
+    });
+
+    const blob = new Blob([csv], {
+        type: "text/csv;charset=utf-8;"
+    });
+
+    const link = document.createElement("a");
+
+    link.href = URL.createObjectURL(blob);
+
+    link.download = "Student_Admissions.csv";
+
+    link.click();
+
 });
+
+
+loadStudents();

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Check Student Result</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f4f4;
+padding:20px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+h1{
+text-align:center;
+color:#5b2c6f;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:14px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:16px;
+margin-bottom:20px;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#5b2c6f;
+color:white;
+border:none;
+border-radius:6px;
+font-size:17px;
+cursor:pointer;
+}
+
+button:hover{
+background:#8b5a2b;
+}
+
+.result{
+display:none;
+margin-top:30px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th{
+background:#5b2c6f;
+color:white;
+padding:12px;
+}
+
+td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+.printBtn{
+margin-top:20px;
+background:#27ae60;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Student Result Checker</h1>
+
+<input
+type="text"
+id="applicationNumber"
+placeholder="Enter Application Number">
+
+<button id="checkBtn">
+
+Check Result
+
+</button>
+
+<div class="result" id="result">
+
+<h2 id="studentName"></h2>
+
+<p><strong>Application No:</strong> <span id="appNo"></span></p>
+
+<p><strong>Class:</strong> <span id="studentClass"></span></p>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Subject</th>
+
+<th>Score</th>
+
+</tr>
+
+</thead>
+
+<tbody id="scores">
+
+</tbody>
+
+</table>
+
+<h3>Total: <span id="total"></span></h3>
+
+<h3>Average: <span id="average"></span></h3>
+
+<button class="printBtn" onclick="window.print()">
+
+🖨 Print Result
+
+</button>
+
+</div>
+
+</div>
+
+<script type="module" src="check-result.js"></script>
+
+</body>
+</html>

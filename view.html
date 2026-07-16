@@ -75,6 +75,28 @@ button:hover{
 
 <h1>Student Details</h1>
 
+<div style="text-align:center;margin-bottom:25px;">
+
+    <div id="passport"
+    style="
+    width:160px;
+    height:180px;
+    margin:auto;
+    border:3px solid #5b2c6f;
+    border-radius:10px;
+    overflow:hidden;
+    background:#f8f8f8;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    ">
+
+    No Passport
+
+    </div>
+
+</div>
+
 <table>
 
 <tr>
@@ -138,8 +160,30 @@ button:hover{
 </tr>
 
 </table>
+<div style="display:flex;gap:10px;margin-top:25px;flex-wrap:wrap;">
 
-<button onclick="history.back()">⬅ Back to Dashboard</button>
+<button
+onclick="history.back()"
+style="flex:1;">
+⬅ Back to Dashboard
+</button>
+
+<button
+id="idCardBtn"
+style="
+flex:1;
+background:#27ae60;
+color:white;
+border:none;
+border-radius:8px;
+padding:15px;
+font-size:17px;
+cursor:pointer;
+">
+🪪 Student ID Card
+</button>
+
+</div>
 
 </div>
 

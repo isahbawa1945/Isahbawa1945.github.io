@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>School Fees Payment</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f4f4;
+padding:20px;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+background:#fff;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+h1{
+text-align:center;
+color:#5b2c6f;
+margin-bottom:20px;
+}
+
+input,
+select{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#5b2c6f;
+color:white;
+border:none;
+border-radius:6px;
+font-size:17px;
+cursor:pointer;
+}
+
+button:hover{
+background:#8b5a2b;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>School Fees Payment</h1>
+
+<input
+type="text"
+id="applicationNumber"
+placeholder="Application Number">
+
+
+<input
+type="text"
+id="studentName"
+placeholder="Student Name"
+readonly>
+
+<input
+type="text"
+id="studentClass"
+placeholder="Class"
+readonly>
+
+<select id="feeType">
+
+<option value="">Select Fee Type</option>
+
+<option>Admission Fee</option>
+
+<option>School Fee</option>
+
+<option>Examination Fee</option>
+
+<option>Uniform Fee</option>
+
+<option>Books Fee</option>
+
+<option>Registration Fee</option>
+
+<option>Other</option>
+
+</select>
+
+
+<input
+type="number"
+id="totalFees"
+placeholder="Total School Fees">
+
+<input
+type="number"
+id="amountPaid"
+placeholder="Amount Paid">
+
+<select id="paymentMethod">
+
+<option>Cash</option>
+
+<option>Transfer</option>
+
+<option>POS</option>
+
+</select>
+
+<button id="savePayment">
+
+Save Payment
+
+</button>
+
+</div>
+
+<script type="module" src="fees.js"></script>
+
+</body>
+
+</html>

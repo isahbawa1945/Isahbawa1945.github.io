@@ -1,3 +1,14 @@
+// Check if admin is logged in
+if (localStorage.getItem("adminLoggedIn") !== "true") {
+
+    alert("Please login first.");
+
+    window.location.href = "login.html";
+
+}
+
+
+
 // Firebase SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import {
@@ -54,6 +65,59 @@ async function loadStudent() {
             document.getElementById("address").textContent = data.address || "";
             document.getElementById("info").textContent = data.info || "";
 
+        
+            
+            // Display Passport
+const passportContainer = document.getElementById("passport");
+
+if (data.passport && data.passport !== "") {
+
+    passportContainer.innerHTML = `
+        <img src="${data.passport}"
+        alt="Passport"
+        style="
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        ">
+    `;
+
+} else {
+
+    const passport = localStorage.getItem("passport");
+
+    if (passport && passport !== "") {
+
+        passportContainer.innerHTML = `
+            <img src="${passport}"
+            alt="Passport"
+            style="
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            ">
+        `;
+
+    } else {
+
+        passportContainer.innerHTML = `
+            <div style="
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            width:100%;
+            height:100%;
+            color:#666;
+            ">
+            No Passport
+            </div>
+        `;
+
+    }
+
+}
+            
+            
         } else {
 
             alert("Student record not found.");
@@ -70,3 +134,9 @@ async function loadStudent() {
 }
 
 loadStudent();
+// Open Student ID Card
+document.getElementById("idCardBtn").addEventListener("click", () => {
+
+    window.location.href = `student-id.html?id=${id}`;
+
+});

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Result Management</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f4f4;
+padding:20px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+h1{
+text-align:center;
+color:#5b2c6f;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-bottom:20px;
+border:1px solid #ccc;
+border-radius:6px;
+font-size:16px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+}
+
+th{
+background:#5b2c6f;
+color:white;
+padding:12px;
+}
+
+td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
+}
+
+button{
+padding:12px 20px;
+background:#27ae60;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:16px;
+margin-top:20px;
+}
+
+button:hover{
+background:#1f8a4d;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Student Result Management</h1>
+
+<input
+type="text"
+id="searchStudent"
+placeholder="Enter Application Number">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Subject</th>
+<th>Score (100)</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr><td>Qur'an</td><td><input type="number" id="quran"></td></tr>
+<tr><td>Hadith</td><td><input type="number" id="hadith"></td></tr>
+<tr><td>Tawheed</td><td><input type="number" id="tawheed"></td></tr>
+<tr><td>Fiqh</td><td><input type="number" id="fiqh"></td></tr>
+<tr><td>Arabic</td><td><input type="number" id="arabic"></td></tr>
+<tr><td>English</td><td><input type="number" id="english"></td></tr>
+<tr><td>Mathematics</td><td><input type="number" id="math"></td></tr>
+
+</tbody>
+
+</table>
+
+<button id="saveResult">
+
+💾 Save Result
+
+</button>
+
+</div>
+
+<script type="module" src="results.js"></script>
+
+</body>
+</html>
