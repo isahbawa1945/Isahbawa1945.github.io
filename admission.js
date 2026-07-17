@@ -38,7 +38,7 @@ if (form) {
 
             }
 
-        const student = {
+const student = {
 
     applicationNumber,
 
@@ -54,11 +54,12 @@ if (form) {
     address: formData.get("address"),
     info: formData.get("info"),
 
+    password: "0000",
+
     status: "Pending",
 
-
-
 };
+
     
 
             // Save to Firestore

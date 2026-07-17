@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f4f4;
+padding:20px;
+}
+
+.header{
+background:#5b2c6f;
+color:white;
+padding:20px;
+border-radius:10px;
+text-align:center;
+margin-bottom:20px;
+}
+
+.header h2{
+margin-bottom:5px;
+}
+
+.menu{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.menu a{
+display:block;
+background:white;
+padding:20px;
+text-align:center;
+text-decoration:none;
+color:#5b2c6f;
+font-weight:bold;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.menu a:hover{
+background:#5b2c6f;
+color:white;
+}
+
+.logout{
+margin-top:25px;
+background:#e74c3c;
+color:white;
+padding:15px;
+text-align:center;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+
+<h2 id="studentName">Welcome</h2>
+
+<p>Student Portal</p>
+
+</div>
+
+<div class="menu">
+
+<a href="#" id="profileLink">👤 My Profile</a>
+
+<a href="#" id="ackLink">🧾 Acknowledgement Slip</a>
+
+<a href="#" id="admissionLink">📄 Admission Letter</a>
+
+<a href="#" id="idCardLink">🪪 Student ID Card</a>
+
+<a href="#" id="feesLink">💳 School Fees</a>
+
+<a href="#" id="resultLink">📊 My Results</a>
+
+</div>
+
+<div class="logout" id="logout">
+
+Logout
+
+</div>
+
+<script type="module" src="student-dashboard.js"></script>
+
+</body>
+</html>

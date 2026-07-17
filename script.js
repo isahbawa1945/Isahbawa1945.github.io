@@ -100,3 +100,65 @@ footer.innerHTML = `© ${year} Madarasatul Arkanul Islam Wadirasatul Islamiyya. 
 }
 
 console.log("Website Loaded Successfully");
+
+// ================= WELCOME POPUP =================
+
+const enterBtn = document.getElementById("enterWebsite");
+const popup = document.getElementById("welcomePopup");
+
+if (enterBtn && popup) {
+
+    enterBtn.addEventListener("click", () => {
+
+        popup.style.display = "none";
+
+    });
+
+}
+
+// ================= LIVE CLOCK =================
+
+function updateClock() {
+
+    const now = new Date();
+
+    document.getElementById("digitalClock").innerHTML =
+        "🕒 " + now.toLocaleTimeString();
+
+    document.getElementById("gregorianDate").innerHTML =
+        "📅 " + now.toDateString();
+
+}
+
+setInterval(updateClock, 1000);
+
+updateClock();
+
+// ================= HIJRI DATE & PRAYER TIMES =================
+
+fetch("https://api.aladhan.com/v1/timingsByCity?city=Minna&country=Nigeria&method=2")
+.then(response => response.json())
+.then(data => {
+
+    const hijri = data.data.date.hijri;
+
+    document.getElementById("hijriDate").innerHTML =
+        "🌙 " + hijri.day + " " + hijri.month.en + " " + hijri.year + " AH";
+
+    document.getElementById("prayerTimes").innerHTML =
+        "🕌 Fajr: " + data.data.timings.Fajr +
+        " | Dhuhr: " + data.data.timings.Dhuhr +
+        " | Asr: " + data.data.timings.Asr +
+        " | Maghrib: " + data.data.timings.Maghrib +
+        " | Isha: " + data.data.timings.Isha;
+
+})
+.catch(error => {
+    console.log(error);
+
+    document.getElementById("hijriDate").innerHTML =
+        "🌙 Hijri date unavailable";
+
+    document.getElementById("prayerTimes").innerHTML =
+        "🕌 Prayer times unavailable";
+});
