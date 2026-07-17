@@ -1,107 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Student Dashboard</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#f4f4f4;
-padding:20px;
-}
-
-.header{
-background:#5b2c6f;
-color:white;
-padding:20px;
-border-radius:10px;
-text-align:center;
-margin-bottom:20px;
-}
-
-.header h2{
-margin-bottom:5px;
-}
-
-.menu{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:15px;
-}
-
-.menu a{
-display:block;
-background:white;
-padding:20px;
-text-align:center;
-text-decoration:none;
-color:#5b2c6f;
-font-weight:bold;
-border-radius:10px;
-box-shadow:0 3px 10px rgba(0,0,0,.1);
-transition:.3s;
-}
-
-.menu a:hover{
-background:#5b2c6f;
-color:white;
-}
-
-.logout{
-margin-top:25px;
-background:#e74c3c;
-color:white;
-padding:15px;
-text-align:center;
-border-radius:8px;
-cursor:pointer;
-font-weight:bold;
-}
-</style>
+<link rel="stylesheet" href="student-dashboard.css">
 
 </head>
 
 <body>
 
+<div class="dashboard">
+
+<!-- HEADER -->
+
 <div class="header">
 
-<h2 id="studentName">Welcome</h2>
+<img src="images/logo.png" class="school-logo">
+
+<div>
+
+<h1>Madarasatul Arkanul Islam</h1>
+
+<h3>Wadirasatul Islamiyya</h3>
 
 <p>Student Portal</p>
 
 </div>
 
-<div class="menu">
+</div>
 
-<a href="#" id="profileLink">👤 My Profile</a>
+<!-- STUDENT PROFILE -->
 
-<a href="#" id="ackLink">🧾 Acknowledgement Slip</a>
+<div class="profile-card">
 
-<a href="#" id="admissionLink">📄 Admission Letter</a>
+<img src="images/passport.png" id="studentPassport" class="passport">
 
-<a href="#" id="idCardLink">🪪 Student ID Card</a>
+<div class="student-info">
 
-<a href="#" id="feesLink">💳 School Fees</a>
+<h2 id="studentName">Loading...</h2>
 
-<a href="#" id="resultLink">📊 My Results</a>
+<p id="applicationNumber"></p>
+
+<p id="studentClass"></p>
+
+<p id="studentStatus"></p>
+
+<p>Session: 2026/2027</p>
 
 </div>
 
+</div>
+<!-- SCHOOL FEES -->
+
+<div class="fees-card">
+
+<h2>💰 School Fees Summary</h2>
+
+<div class="fee-box">
+
+<div>
+<h3>Total Fees</h3>
+<p id="totalFees">₦0</p>
+</div>
+
+<div>
+<h3>Amount Paid</h3>
+<p id="amountPaid">₦0</p>
+</div>
+
+<div>
+<h3>Balance</h3>
+<p id="balance">₦0</p>
+</div>
+
+<div>
+<h3>Status</h3>
+<p id="paymentStatus">Not Paid</p>
+</div>
+
+</div>
+
+</div>
 <div class="logout" id="logout">
 
-Logout
+🚪 Logout
 
 </div>
 
 <script type="module" src="student-dashboard.js"></script>
 
+</div>
+
 </body>
+
 </html>
