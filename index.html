@@ -68,93 +68,104 @@ isahismail1699@gmail.com
 
 </div>
 
-<!-- NAVBAR -->
+<!-- ================= NAVIGATION ================= -->
 
-<nav class="navbar navbar-expand-lg bg-white shadow-sm sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 
 <div class="container">
 
-<a class="navbar-brand d-flex align-items-center" href="#">
+<a class="navbar-brand d-flex align-items-center" href="#home">
 
-<img src="images/logo.png" class="logo">
+<img src="images/logo.png" class="logo" alt="School Logo">
 
 <div class="ms-2">
 
-<h5 class="m-0 school-name">
-
+<h5 class="m-0 text-white">
 Madarasatul Arkanul Islam
-
 </h5>
 
-<small>Qur'an • Sunnah • Knowledge</small>
+<small class="text-warning">
+Qur'an • Sunnah • Knowledge
+</small>
 
 </div>
 
 </a>
 
 <button class="navbar-toggler"
-
 type="button"
-
 data-bs-toggle="collapse"
-
-data-bs-target="#menu">
+data-bs-target="#navbarNav">
 
 <span class="navbar-toggler-icon"></span>
 
 </button>
 
 <div class="collapse navbar-collapse"
-
-id="menu">
+id="navbarNav">
 
 <ul class="navbar-nav ms-auto">
 
 <li class="nav-item">
 
-<a class="nav-link active"
-
-href="#">Home</a>
-
-</li>
-
-<li class="nav-item">
-
-<a class="nav-link"
-
-href="about.html">About</a>
+<a class="nav-link" href="#home">
+Home
+</a>
 
 </li>
 
 <li class="nav-item">
 
-<a class="nav-link"
+<a class="nav-link" href="#about">
+About
+</a>
 
-href="admission.html">
+</li>
 
+<li class="nav-item">
+
+<a class="nav-link" href="#programmes">
+Programmes
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link" href="admission.html">
 Admission
-
 </a>
 
 </li>
 
 <li class="nav-item">
 
-<a class="nav-link"
+<a class="nav-link" href="#gallery">
+Gallery
+</a>
 
-href="contact.html">
+</li>
 
+<li class="nav-item">
+
+<a class="nav-link" href="#news">
+News
+</a>
+
+</li>
+
+<li class="nav-item">
+
+<a class="nav-link" href="#contact">
 Contact
-
 </a>
 
 </li>
 
 <li class="nav-item">
 
-<a class="btn btn-success ms-lg-3"
-
-href="student/login.html">
+<a class="btn btn-warning ms-lg-3"
+href="student-login.html">
 
 Student Portal
 
@@ -170,49 +181,51 @@ Student Portal
 
 </nav>
 
-<!-- HERO -->
+<div class="news-ticker">
 
-<section class="hero">
+    <div class="news-label">
+        📢 Latest News
+    </div>
 
-<div class="overlay">
+    <div class="news-content">
+        <div class="news-text">
+            2026/2027 Admission is now open • Tahfiz Registration is ongoing • Entrance Examination will hold on 23 August 2026 • Parents are advised to complete registration early • Welcome to Madarasatul Arkanul Islam wa Dirasatul Islamiyya
+        </div>
+    </div>
+
+</div>
+
+<!--HERO-->
+
+<section id="home" class="hero">
+
+<div class="hero-overlay">
 
 <div class="container text-center text-white">
 
-<h3 class="arabic">
+<h4 class="arabic">
+بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+</h4>
 
-بِسْمِ اللَّهِ الرَّحْمٰنِ الرَّحِيمِ
+<h1>Madarasatul Arkanul Islam</h1>
 
-</h3>
-
-<h1>
-
-Madarasatul Arkanul Islam
-
-</h1>
-
-<h2>
-
-wa Dirasatul Islamiyya
-
-</h2>
+<h2>wa Dirasatul Islamiyya</h2>
 
 <p>
-
-Beside Chanchaga Primary School,
-
-Along Supreme International School,
-
-Chanchaga, Niger State.
-
+Providing Quality Islamic and Western Education Since 8th August 2013
 </p>
 
-<a href="admission.html"
+<div class="mt-4">
 
-class="btn btn-warning btn-lg">
-
-Apply for Admission
-
+<a href="admission.html" class="btn btn-success btn-lg me-3">
+Apply Now
 </a>
+
+<a href="#about" class="btn btn-outline-light btn-lg">
+Learn More
+</a>
+
+</div>
 
 </div>
 
@@ -222,7 +235,7 @@ Apply for Admission
 
 <!-- ================= ABOUT SECTION ================= -->
 
-<section class="about py-5">
+<section id="about" class="about py-5">
 
 <div class="container">
 
@@ -306,7 +319,7 @@ Read More
 
 <!-- WHY CHOOSE US -->
 
-<section class="why-us py-5">
+<section id="programmes" class="why-us py-5">
 
 <div class="container">
 
@@ -426,7 +439,7 @@ We work closely with parents and the community to nurture responsible future lea
 
 <!-- ================= GALLERY ================= -->
 
-<section class="gallery py-5">
+<section id="gallery" class="gallery py-5">
 
 <div class="container">
 
@@ -487,7 +500,7 @@ View Full Gallery
 
 <!-- ================= NEWS ================= -->
 
-<section class="news py-5">
+<section id="news" class="news py-5">
 
 <div class="container">
 
@@ -626,10 +639,10 @@ Read More
 </section>
 
 <!-- ================= FOOTER ================= -->
+<footer id="contact" class="footer">
 
-<footer class="footer">
-
-<div class="container">
+    <div class="container">
+    
 
 <div class="row">
 
@@ -706,6 +719,9 @@ target="_blank">
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="script.js"></script>
+
 
 </body>
 

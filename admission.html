@@ -1,14 +1,390 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Online Admission | Madarasatul Arkanul Islam wa Dirasatul Islamiyya</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+<link rel="stylesheet" href="admission.css">
+
 </head>
 
 <body>
-  
+
+<!-- Top Bar -->
+
+<div class="top-bar">
+
+<div class="container d-flex justify-content-between">
+
+<div>
+
+<i class="fas fa-phone"></i> 08104677487
+
+</div>
+
+<div>
+
+<i class="fab fa-whatsapp"></i> 08130264028
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Header -->
+
+<header class="admission-header">
+
+<div class="container text-center">
+
+<img src="images/logo.png" class="school-logo" alt="School Logo">
+
+<h1>Madarasatul Arkanul Islam wa Dirasatul Islamiyya</h1>
+
+<p class="motto">Qur'an • Sunnah • Knowledge</p>
+
+<h3 class="portal-title">ONLINE ADMISSION PORTAL</h3>
+
+<p>2026/2027 Academic Session</p>
+
+</div>
+
+</header>
+
+<!-- Admission Form -->
+
+<section class="container my-5">
+
+<form id="admissionForm">
+
+<div class="card shadow mb-4">
+
+<div class="card-header bg-success text-white">
+
+<h4><i class="fas fa-user-graduate"></i> Student Information</h4>
+
+</div>
+
+<div class="card-body">
+
+<div class="row">
+
+<div class="col-md-4 mb-3">
+
+<label>Surname</label>
+
+<input
+type="text"
+id="surname"
+name="surname"
+required>
+
+</div>
+
+<div class="col-md-4 mb-3">
+
+<label>First Name</label>
+
+<input type="text" class="form-control" id="firstname" required>
+
+</div>
+
+<div class="col-md-4 mb-3">
+
+<label>Other Name</label>
+
+<input type="text" class="form-control" id="othername">
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Gender</label>
+
+  <select class="form-select" id="gender" required>
+
+<option value="">Select Gender</option>
+
+<option>Male</option>
+
+<option>Female</option>
+
+</select>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Date of Birth</label>
+
+<input type="date" class="form-control" id="dob">
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>State of Origin</label>
+
+<input type="text" class="form-control" id="state">
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Local Government Area</label>
+
+<input type="text" class="form-control" id="lga">
+
+</div>
+
+<div class="col-md-12 mb-3">
+
+<label>Home Address</label>
+
+<textarea class="form-control" rows="3" id="address"></textarea>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<!-- Academic Information -->
+
+<div class="card shadow mb-4">
+
+<div class="card-header bg-success text-white">
+
+<h4><i class="fas fa-book"></i> Academic Information</h4>
+
+</div>
+
+<div class="card-body">
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+
+<label>Class Applying For</label>
+
+<select class="form-select" id="classApplying" required>
+
+<option value="">Select Class</option>
+
+<option>Beginners</option>
+
+<option>Intermediate</option>
+
+<option>Advance</option>
+
+<option>Tahfiz</option>
+
+</select>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Previous School</label>
+
+<input type="text" class="form-control" id="previousSchool">
+
+</div>
+
+<div class="col-md-12 mb-3">
+
+<label>Previous Class Attended</label>
+
+<input type="text" class="form-control" id="previousClass">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Parent / Guardian Information -->
+
+<div class="card shadow mb-4">
+
+<div class="card-header bg-success text-white">
+
+<h4><i class="fas fa-users"></i> Parent / Guardian Information</h4>
+
+</div>
+
+<div class="card-body">
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+
+<label>Parent/Guardian Full Name</label>
+
+<input type="text" class="form-control" id="parentName" required>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Relationship</label>
+
+<input type="text" class="form-control" id="relationship">
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Phone Number</label>
+
+<input type="tel" class="form-control" id="phone" required>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>WhatsApp Number</label>
+
+<input type="tel" class="form-control" id="whatsapp">
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Email Address</label>
+
+<input type="email" class="form-control" id="email">
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Occupation</label>
+
+<input type="text" class="form-control" id="occupation">
+
+</div>
+
+<div class="col-md-12 mb-3">
+
+<label>Residential Address</label>
+
+<textarea class="form-control" rows="3" id="parentAddress"></textarea>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Upload Documents -->
+
+<div class="card shadow mb-4">
+
+<div class="card-header bg-success text-white">
+
+<h4><i class="fas fa-upload"></i> Upload Documents</h4>
+
+</div>
+
+<div class="card-body">
+
+<div class="mb-3">
+
+<label>Passport Photograph</label>
+
+<input type="file" class="form-control" id="passport" accept="image/*" required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Birth Certificate</label>
+
+<input type="file" class="form-control" id="birthCertificate" accept=".pdf,.jpg,.jpeg,.png" required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Previous School Result (Optional)</label>
+
+<input type="file" class="form-control" id="previousResult" accept=".pdf,.jpg,.jpeg,.png">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Declaration -->
+
+<div class="card shadow mb-4">
+
+<div class="card-header bg-success text-white">
+
+<h4><i class="fas fa-check-circle"></i> Declaration</h4>
+
+</div>
+
+<div class="card-body">
+
+<div class="form-check">
+
+<input class="form-check-input" type="checkbox" id="agree" required>
+
+<label class="form-check-label" for="agree">
+
+I declare that all the information provided is true and correct.
+
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="text-center mb-5">
+
+<button type="submit" class="btn btn-success btn-lg me-3">
+
+<i class="fas fa-paper-plane"></i> Submit Application
+
+</button>
+
+<button type="reset" class="btn btn-secondary btn-lg">
+
+<i class="fas fa-rotate-left"></i> Reset Form
+
+</button>
+
+</div>
+
+</form>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script type="module" src="firebase.js"></script>
+<script type="module" src="admission.js"></script>
+
+
 </body>
 
 </html>
